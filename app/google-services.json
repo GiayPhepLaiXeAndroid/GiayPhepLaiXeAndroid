@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032154214348",
+    "project_id": "thibanglaixe-7b8ef",
+    "storage_bucket": "thibanglaixe-7b8ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032154214348:android:e5e43ad4cee464dde23769",
+        "android_client_info": {
+          "package_name": "com.example.thibanglaixe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeZbjfX28DSQxtY-p0iZt0Q91F1Z-2SS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
