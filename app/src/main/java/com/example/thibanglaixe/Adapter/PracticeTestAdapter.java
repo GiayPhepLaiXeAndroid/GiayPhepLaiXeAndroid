@@ -19,6 +19,12 @@ import java.util.ArrayList;
 public class PracticeTestAdapter extends RecyclerView.Adapter<PracticeTestAdapter.MyViewHolder> {
     Context context;
     ArrayList<Exam> listExaml;
+
+    public PracticeTestAdapter(Context context, ArrayList<Exam> listExaml) {
+        this.context = context;
+        this.listExaml = listExaml;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,7 +40,7 @@ public class PracticeTestAdapter extends RecyclerView.Adapter<PracticeTestAdapte
             @Override
             public void onClick(View v) {
                 Intent viewExam = new Intent(holder.itemView.getContext(), ViewExamActivity.class);
-                context.startActivity(viewExam);
+                holder.itemView.getContext().startActivity(viewExam);
             }
         });
     }
