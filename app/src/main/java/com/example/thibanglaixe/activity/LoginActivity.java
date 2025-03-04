@@ -49,6 +49,17 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
+        sharedPreferences = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean viewInf = sharedPreferences.getBoolean(Constants.PREF_IS_SAVE_INF, false);
+        if (viewInf) {
+            String email = sharedPreferences.getString(Constants.PREF_EMAIL, "");
+            String password = sharedPreferences.getString(Constants.PREF_PASSWORD, "");
+            Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
+//            if (!email.isEmpty()) login_et_email.setText(email);
+//            if (!password.isEmpty()) login_et_password.setText(password);
+        }
+
         login_layout_signup = findViewById(R.id.login_layout_signup);
         login_layout_signup.setOnClickListener(viewSignUp -> {
             Intent SignUp = new Intent(LoginActivity.this, SignUpActivity.class);
@@ -95,14 +106,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        login_cb_saveInf = findViewById(R.id.login_cb_saveInf);
         login_btn_login = findViewById(R.id.login_btn_login);
         login_btn_login.setOnClickListener(login -> {
             if(validation()) {
                 String email = login_et_email.getText().toString();
                 String password = login_et_password.getText().toString();
-                sharedPreferences = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
                 firebaseFirestore = FirebaseFirestore.getInstance();
-                SharedPreferences.Editor editor = sharedPreferences.edit();
                 firebaseFirestore.collection(Constants.PREF_COLLECTION_USER)
                         .whereEqualTo(Constants.PREF_EMAIL, email)
                         .whereEqualTo(Constants.PREF_PASSWORD, password)
@@ -113,6 +123,14 @@ public class LoginActivity extends AppCompatActivity {
                                 if(queryDocumentSnapshots.isEmpty()) {
                                     Toast.makeText(getApplicationContext(), "Kiểm tra thông tin đăng nhập", Toast.LENGTH_SHORT).show();
                                 }else {
+                                    Boolean isSaveInf = login_cb_saveInf.isChecked();
+                                    if (isSaveInf) {
+                                        editor.putBoolean(Constants.PREF_IS_SAVE_INF, true);
+                                    } else editor.putBoolean(Constants.PREF_IS_SAVE_INF, false);
+                                    editor.putString(Constants.PREF_EMAIL, email);
+                                    editor.putString(Constants.PREF_PASSWORD, password);
+                                    editor.putBoolean(Constants.PREF_IS_LOGIN, true);
+                                    editor.apply();
                                     Intent viewMain = new Intent(LoginActivity.this, MainActivity.class);
                                     viewMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(viewMain);
