@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.R;
 import com.example.thibanglaixe.activity.ViewExamActivity;
+import com.example.thibanglaixe.activity.ViewItemRecyclerViewMainActivity;
 import com.example.thibanglaixe.object.Exam;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class PracticeTestAdapter extends RecyclerView.Adapter<PracticeTestAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent viewExam = new Intent(holder.itemView.getContext(), ViewExamActivity.class);
+                Intent viewExam = new Intent(holder.itemView.getContext(), ViewItemRecyclerViewMainActivity.class);
                 holder.itemView.getContext().startActivity(viewExam);
             }
         });
