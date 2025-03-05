@@ -3,7 +3,6 @@ package com.example.thibanglaixe.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.widget.GridLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.Adapter.PracticeTestAdapter;
 import com.example.thibanglaixe.R;
-import com.example.thibanglaixe.model.Exam;
+import com.example.thibanglaixe.object.Exam;
 import com.example.thibanglaixe.untilities.GridSpacingItemDecoration;
 
 import java.util.ArrayList;

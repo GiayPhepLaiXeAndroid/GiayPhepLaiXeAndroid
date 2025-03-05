@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.R;
 import com.example.thibanglaixe.activity.ViewExamActivity;
-import com.example.thibanglaixe.model.Exam;
+import com.example.thibanglaixe.object.Exam;
 
 import java.util.ArrayList;
 
