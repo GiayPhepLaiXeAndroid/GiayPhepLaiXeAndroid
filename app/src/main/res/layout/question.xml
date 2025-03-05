@@ -90,6 +90,7 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup_question" />
@@ -107,6 +108,7 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/correct_answer" />

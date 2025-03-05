@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,37 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         holder.answer1.setText(getQuestion.getChoice1());
         holder.answer1.setText(getQuestion.getChoice1());
         holder.answer1.setText(getQuestion.getChoice1());
+
+        holder.radioGroup_question.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int yourAnswer = holder.radioGroup_question.getCheckedRadioButtonId();
+                int answer = getQuestion.getAnswer();
+                if (yourAnswer != -1) { // Nếu có radio button được chọn
+                    int index = 0;
+
+                    // Duyệt qua tất cả các radio button trong radio group
+                    for (int i = 0; i < holder.radioGroup_question.getChildCount(); i++) {
+                        View child = holder.radioGroup_question.getChildAt(i);
+                        if (child instanceof RadioButton) { // Chỉ xét các RadioButton
+                            index++;
+                            if (child.getId() == yourAnswer) { // Nếu ID khớp với button được chọn
+                                Toast.makeText(context, "Your answer: " + Integer.toString(yourAnswer) + " Answer: " + Integer.toString(answer), Toast.LENGTH_SHORT).show();
+                                if (index == answer) {
+                                    holder.correct_answer.setVisibility(View.VISIBLE);
+                                    holder.wrong_answer.setVisibility(View.GONE);
+                                } else {
+                                    holder.wrong_answer.setVisibility(View.VISIBLE);
+                                    holder.correct_answer.setVisibility(View.GONE);
+                                }
+                                //Toast.makeText(context, "Thứ tự: " + index, Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -55,6 +87,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             numberQuestion = itemView.findViewById(R.id.numberQuestion);
+            radioGroup_question = itemView.findViewById(R.id.radioGroup_question);
             titleQuestion = itemView.findViewById(R.id.titleQuestion);
             correct_answer = itemView.findViewById(R.id.correct_answer);
             wrong_answer = itemView.findViewById(R.id.wrong_answer);

@@ -1,10 +1,13 @@
 package com.example.thibanglaixe.activity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,6 +24,10 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
     RecyclerView rv_questions;
     ArrayList<Question> listQuestion;
     QuestionAdapter questionAdapter;
+    ConstraintLayout btn_back;
+    TextView viewTime;
+    CountDownTimer countDownTimer;
+    long timeLeftInMillis = 1800000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,5 +49,33 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
         Toast.makeText(this, Integer.toString(listQuestion.size()), Toast.LENGTH_SHORT).show();
         questionAdapter = new QuestionAdapter(getApplicationContext(), listQuestion);
         rv_questions.setAdapter(questionAdapter);
+
+        btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(btn_back -> finish());
+        viewTime = findViewById(R.id.viewTime);
+        startCountdown();
+    }
+
+    private void startCountdown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateTime();
+            }
+
+            @Override
+            public void onFinish() {
+                finish();
+            }
+        }.start();
+    }
+
+    private void updateTime() {
+        int minutes = (int) (timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+        // Định dạng thành "MM:SS"
+        String timeFormatted = String.format("%02d:%02d", minutes, seconds);
+        viewTime.setText(timeFormatted);
     }
 }
