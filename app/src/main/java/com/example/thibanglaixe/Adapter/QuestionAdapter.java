@@ -20,6 +20,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     Context context;
     ArrayList<Question> listQuestion;
 
+    public QuestionAdapter(Context context, ArrayList<Question> listQuestion) {
+        this.context = context;
+        this.listQuestion = listQuestion;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
