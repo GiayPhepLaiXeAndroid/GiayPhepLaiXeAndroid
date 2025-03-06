@@ -44,7 +44,7 @@ public class MainactivityFuncAdapter extends RecyclerView.Adapter<MainactivityFu
          String func = listFunc.get(position);
          holder.title.setText(func);
          holder.icon.setImageResource(idIcon);
-         holder.constraintLayout.setBackgroundColor(idColor);
+         holder.constraintLayout.setBackgroundResource(idColor);
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
