@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.R;
 import com.example.thibanglaixe.activity.PracticeTestActivity;
+import com.example.thibanglaixe.activity.TipsRememberActivity;
+import com.example.thibanglaixe.activity.TrafficSignActivity;
+import com.example.thibanglaixe.activity.ViewItemRecyclerViewMainActivity;
 
 import java.util.ArrayList;
 
@@ -21,13 +24,15 @@ public class MainactivityFuncAdapter extends RecyclerView.Adapter<MainactivityFu
     Context context;
     ArrayList<Integer> listIdIcon;
     ArrayList<String> listFunc;
+    ArrayList<String> listTag;
     ArrayList<Integer> listColor;
 
-    public MainactivityFuncAdapter(Context context, ArrayList<Integer> listColor, ArrayList<String> listFunc, ArrayList<Integer> listIdIcon) {
+    public MainactivityFuncAdapter(Context context, ArrayList<Integer> listColor, ArrayList<Integer> listIdIcon, ArrayList<String> listFunc, ArrayList<String> listTag) {
         this.context = context;
         this.listColor = listColor;
-        this.listFunc = listFunc;
         this.listIdIcon = listIdIcon;
+        this.listFunc = listFunc;
+        this.listTag = listTag;
     }
 
     @NonNull
@@ -42,14 +47,26 @@ public class MainactivityFuncAdapter extends RecyclerView.Adapter<MainactivityFu
          int idIcon = listIdIcon.get(position);
          int idColor = listColor.get(position);
          String func = listFunc.get(position);
+         String tag = listTag.get(position);
          holder.title.setText(func);
          holder.icon.setImageResource(idIcon);
          holder.constraintLayout.setBackgroundResource(idColor);
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent intent = new Intent(context, PracticeTestActivity.class);
-                 holder.itemView.getContext().startActivity(intent);
+                 if(tag == "note") {
+                     Intent noteActivity = new Intent(context, TipsRememberActivity.class);
+                     holder.itemView.getContext().startActivity(noteActivity);
+                 } else if(tag == "random" | tag == "test"){
+                     Intent intent = new Intent(context, PracticeTestActivity.class);
+                     holder.itemView.getContext().startActivity(intent);
+                 }else if(tag == "wrong" | tag == "practice" | tag == "point" |  tag == "top") {
+                     Intent intent = new Intent(context, ViewItemRecyclerViewMainActivity.class);
+                     holder.itemView.getContext().startActivity(intent);
+                 }else {
+                     Intent trafficSign = new Intent(context, TrafficSignActivity.class);
+                     holder.itemView.getContext().startActivity(trafficSign);
+                 }
              }
          });
     }

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PracticeTestActivity extends AppCompatActivity {
-    ArrayList<String> practiceTestTitle = new ArrayList<>(Arrays.asList("Exam1", "Exam2", "Exam3", "Exam4", "Exam5", "Exam6"));
+    ArrayList<String> practiceTestTitle = new ArrayList<>(Arrays.asList("Đề 1", "Đề 2", "Đề 3", "Đề 4", "Đề 5", "Đề 6"));
     ArrayList<String> practiceTestCode = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6"));
     RecyclerView PracticeTest_rv_Practice;
     PracticeTestAdapter adapter;
