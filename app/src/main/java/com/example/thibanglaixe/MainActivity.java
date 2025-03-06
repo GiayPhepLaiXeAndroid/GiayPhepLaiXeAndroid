@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> listIdIcon, listIdColor;
-    ArrayList<String> listNameFunc;
+    ArrayList<String> listNameFunc, listTag;
     RecyclerView main_rv_func;
     MainactivityFuncAdapter adapter;
     @Override
@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.baseline_menu_book_34, R.drawable.baseline_traffic_34, R.drawable.baseline_label_34,
                 R.drawable.baseline_shield_34, R.drawable.baseline_assessment_34));
         listNameFunc = new ArrayList<>(Arrays.asList("Đề ngẫu nhiên", "Thi theo đề", "Các câu bị sai", "On tập câu hỏi", "Các biển báo", "Mẹo ghi nhớ", "Câu hỏi điểm liệt", "Top 50 câu bị sai"));
-        adapter = new MainactivityFuncAdapter(this, listIdColor, listNameFunc, listIdIcon);
+        listTag = new ArrayList<>(Arrays.asList("random", "test", "wrong", "practice", "news", "note", "point", "top"));
+        adapter = new MainactivityFuncAdapter(this, listIdColor, listIdIcon, listNameFunc, listTag);
         main_rv_func.setAdapter(adapter);
     }
 
