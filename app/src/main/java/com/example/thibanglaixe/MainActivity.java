@@ -36,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         int spanCount = 2;
-        int px = dpToPx(this, 190);
+        int px = dpToPx(this, 180);
         main_rv_func = findViewById(R.id.main_rv_func);
         //main_rv_func.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         main_rv_func.setLayoutManager(new GridLayoutManager(getApplicationContext(), spanCount));
         main_rv_func.addItemDecoration(new GridSpacingItemDecoration(spanCount, px));
-        listIdColor = new ArrayList<>(Arrays.asList(R.color.background_default, R.color.brown, R.color.green, R.color.red, R.color.violet, R.color.black, R.color.yellow, R.color.blue));
+        listIdColor = new ArrayList<>(Arrays.asList(R.drawable.background_default_color, R.drawable.background_brown_color, R.drawable.background_green_color,
+                R.drawable.background_red_color, R.drawable.background_violet_color, R.drawable.background_black_color, R.drawable.background_yellow_color,
+                R.drawable.background_blue_color));
         listIdIcon = new ArrayList<>(Arrays.asList(R.drawable.baseline_access_time_34, R.drawable.baseline_article_34, R.drawable.baseline_error_outline_34,
                 R.drawable.baseline_menu_book_34, R.drawable.baseline_traffic_34, R.drawable.baseline_label_34,
                 R.drawable.baseline_shield_34, R.drawable.baseline_assessment_34));
