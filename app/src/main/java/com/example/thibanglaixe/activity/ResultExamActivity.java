@@ -1,5 +1,6 @@
 package com.example.thibanglaixe.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -9,6 +10,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.thibanglaixe.R;
+import com.example.thibanglaixe.untilities.CustomPieChart;
+
+import java.util.Arrays;
 
 public class ResultExamActivity extends AppCompatActivity {
 
@@ -22,5 +26,8 @@ public class ResultExamActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        CustomPieChart pieChart = findViewById(R.id.pieChart);
+        pieChart.setData(Arrays.asList(40f, 60f),
+                Arrays.asList(getColor(R.color.green), getColor(R.color.red)));
     }
 }

@@ -53,10 +53,10 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
 //        }
         listQuestion = DocxReader.readDocxQuestions(getApplicationContext(), "test_data.docx");
         int num_question = 20;
-        ArrayList<Question> questions = (ArrayList<Question>) listQuestion.subList(0, num_question);
+        ArrayList<Question> questions = listQuestion.subList(0, num_question);
         //Toast.makeText(this, Integer.toString(listQuestion.size()), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, listQuestion.get(1).getChoice3(), Toast.LENGTH_SHORT).show();
-        questionAdapter = new QuestionAdapter(getApplicationContext(), questions);
+        Toast.makeText(this, listQuestion.get(1).getChoice3(), Toast.LENGTH_SHORT).show();
+        questionAdapter = new QuestionAdapter(getApplicationContext(), listQuestion);
         rv_questions.setAdapter(questionAdapter);
 
         btn_back = findViewById(R.id.btn_back);
