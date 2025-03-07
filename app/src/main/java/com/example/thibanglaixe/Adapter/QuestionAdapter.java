@@ -52,7 +52,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 int answer = getQuestion.getAnswer();
                 if (yourAnswer != -1) { // Nếu có radio button được chọn
                     int index = 0;
-
                     // Duyệt qua tất cả các radio button trong radio group
                     for (int i = 0; i < holder.radioGroup_question.getChildCount(); i++) {
                         View child = holder.radioGroup_question.getChildAt(i);
@@ -68,7 +67,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                                     holder.correct_answer.setVisibility(View.GONE);
                                 }
                                 //Toast.makeText(context, "Thứ tự: " + index, Toast.LENGTH_SHORT).show();
-                                break;
+//                                break;
+                            }
+                            else{
+                                child.setEnabled(false);
                             }
                         }
                     }

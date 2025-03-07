@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         listIdIcon = new ArrayList<>(Arrays.asList(R.drawable.baseline_access_time_34, R.drawable.baseline_article_34, R.drawable.baseline_error_outline_34,
                 R.drawable.baseline_menu_book_34, R.drawable.baseline_traffic_34, R.drawable.baseline_label_34,
                 R.drawable.baseline_shield_34, R.drawable.baseline_assessment_34));
-        listNameFunc = new ArrayList<>(Arrays.asList("Đề ngẫu nhiên", "Thi theo đề", "Các câu bị sai", "On tập câu hỏi", "Các biển báo", "Mẹo ghi nhớ", "Câu hỏi điểm liệt", "Top 50 câu bị sai"));
+        listNameFunc = new ArrayList<>(Arrays.asList("Đề ngẫu nhiên", "Thi theo đề", "Các câu bị sai", "Ôn tập câu hỏi", "Các biển báo", "Mẹo ghi nhớ", "Câu hỏi điểm liệt", "Top 50 câu bị sai"));
         listTag = new ArrayList<>(Arrays.asList("random", "test", "wrong", "practice", "news", "note", "point", "top"));
         adapter = new MainactivityFuncAdapter(this, listIdColor, listIdIcon, listNameFunc, listTag);
         main_rv_func.setAdapter(adapter);

@@ -3,9 +3,11 @@ package com.example.thibanglaixe.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,6 +28,8 @@ public class PracticeTestActivity extends AppCompatActivity {
     RecyclerView PracticeTest_rv_Practice;
     PracticeTestAdapter adapter;
     ArrayList<Exam> listExam;
+    TextView tv_title_practice;
+    ConstraintLayout btn_back_practice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +41,15 @@ public class PracticeTestActivity extends AppCompatActivity {
             return insets;
         });
 
+        tv_title_practice = findViewById(R.id.tv_title_practice);
+        tv_title_practice.setText(getIntent().getStringExtra("title"));
+        btn_back_practice = findViewById(R.id.btn_back);
+        btn_back_practice.setOnClickListener(view -> finish());
+
         PracticeTest_rv_Practice = findViewById(R.id.PracticeTest_rv_Practice);
         listExam = new ArrayList<>();
-        for (int i = 0; i < practiceTestCode.size(); i++) {
-            Exam exam = new Exam(practiceTestCode.get(i), practiceTestTitle.get(i));
+        for (int i = 0; i < 22; i++) {
+            Exam exam = new Exam(Integer.toString(i), "Đề " + Integer.toString(i));
             listExam.add(exam);
         }
         adapter = new PracticeTestAdapter(getApplicationContext(), listExam);

@@ -41,7 +41,6 @@ public class PracticeTestAdapter extends RecyclerView.Adapter<PracticeTestAdapte
             @Override
             public void onClick(View v) {
                 Intent viewExam = new Intent(holder.itemView.getContext(), ViewItemRecyclerViewMainActivity.class);
-                viewExam.putExtra("title", getExam.getTitle());
                 holder.itemView.getContext().startActivity(viewExam);
             }
         });

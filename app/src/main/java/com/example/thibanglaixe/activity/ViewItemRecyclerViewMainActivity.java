@@ -27,7 +27,7 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
     ArrayList<Question> listQuestion;
     QuestionAdapter questionAdapter;
     ConstraintLayout btn_back;
-    TextView viewTime;
+    TextView viewTime, tv_viewItem_title;
     CountDownTimer countDownTimer;
     long timeLeftInMillis = 1800000;
     @Override
@@ -40,6 +40,9 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        tv_viewItem_title = findViewById(R.id.tv_viewItem_title);
+        tv_viewItem_title.setText(getIntent().getStringExtra("title"));
 
         rv_questions = findViewById(R.id.rv_questions);
         rv_questions.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
