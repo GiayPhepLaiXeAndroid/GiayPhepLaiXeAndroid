@@ -40,7 +40,7 @@
                 android:id="@+id/title_correct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="30dp"
                 android:text="Đáp án đúng"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -52,13 +52,13 @@
                 android:id="@+id/correct_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
+                android:layout_marginEnd="25dp"
                 android:text="Percent correct"
                 android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -90,7 +90,7 @@
                 android:id="@+id/title_wrong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="30dp"
                 android:text="Đáp án sai"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -102,13 +102,13 @@
                 android:id="@+id/wrong_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
+                android:layout_marginEnd="25dp"
                 android:text="Percent wrong"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

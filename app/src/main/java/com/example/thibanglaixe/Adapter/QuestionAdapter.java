@@ -1,6 +1,8 @@
 package com.example.thibanglaixe.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.R;
+import com.example.thibanglaixe.activity.ResultExamActivity;
 import com.example.thibanglaixe.object.Question;
 
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder> {
     Context context;
     ArrayList<Question> listQuestion;
+    int countQuestion = 0, countCorrectAnswer = 0;
 
     public QuestionAdapter(Context context, ArrayList<Question> listQuestion) {
         this.context = context;
@@ -51,6 +55,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 int yourAnswer = holder.radioGroup_question.getCheckedRadioButtonId();
                 int answer = getQuestion.getAnswer();
                 if (yourAnswer != -1) { // Nếu có radio button được chọn
+                    countQuestion ++;
                     int index = 0;
                     // Duyệt qua tất cả các radio button trong radio group
                     for (int i = 0; i < holder.radioGroup_question.getChildCount(); i++) {
@@ -62,6 +67,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                                 if (index == answer) {
                                     holder.correct_answer.setVisibility(View.VISIBLE);
                                     holder.wrong_answer.setVisibility(View.GONE);
+                                    countCorrectAnswer ++;
                                 } else {
                                     holder.wrong_answer.setVisibility(View.VISIBLE);
                                     holder.correct_answer.setVisibility(View.GONE);
@@ -75,8 +81,18 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                         }
                     }
                 }
+
+                if (countQuestion == listQuestion.size()) {
+                    Intent viewResult = new Intent(context, ResultExamActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("countQuestion", countQuestion);
+                    bundle.putInt("countCorrectAnswer", countCorrectAnswer);
+                    viewResult.putExtras(bundle);
+                    holder.itemView.getContext().startActivity(viewResult);
+                }
             }
         });
+
     }
 
     @Override

@@ -52,8 +52,9 @@ public class ViewItemRecyclerViewMainActivity extends AppCompatActivity {
 //            listQuestion.add(question);
 //        }
         listQuestion = DocxReader.readDocxQuestions(getApplicationContext(), "test_data.docx");
-        int num_question = 20;
-        ArrayList<Question> questions = (ArrayList<Question>) listQuestion.subList(0, num_question);
+        int num_question = 24;
+        // Lấy một phần danh sách và tạo một danh sách mới từ đó
+        ArrayList<Question> questions = new ArrayList<>(listQuestion.subList(0, num_question)); // ✅ Đúng
         //Toast.makeText(this, Integer.toString(listQuestion.size()), Toast.LENGTH_SHORT).show();
         //Toast.makeText(this, listQuestion.get(1).getChoice3(), Toast.LENGTH_SHORT).show();
         questionAdapter = new QuestionAdapter(getApplicationContext(), questions);
