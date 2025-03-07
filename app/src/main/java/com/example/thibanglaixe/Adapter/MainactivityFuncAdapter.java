@@ -56,15 +56,33 @@ public class MainactivityFuncAdapter extends RecyclerView.Adapter<MainactivityFu
              public void onClick(View v) {
                  if(tag == "note") {
                      Intent noteActivity = new Intent(context, TipsRememberActivity.class);
+                     noteActivity.putExtra("title", "Lưu ý");
                      holder.itemView.getContext().startActivity(noteActivity);
                  } else if(tag == "random" | tag == "test"){
                      Intent intent = new Intent(context, PracticeTestActivity.class);
+                     if(tag == "random") intent.putExtra("title", "Ôn tập ngẫu nhiên");
+                     else intent.putExtra("title", "Luyện thi");
                      holder.itemView.getContext().startActivity(intent);
                  }else if(tag == "wrong" | tag == "practice" | tag == "point" |  tag == "top") {
                      Intent intent = new Intent(context, ViewItemRecyclerViewMainActivity.class);
+                     switch (tag) {
+                         case "wrong":
+                             intent.putExtra("title", "Câu hỏi sai");
+                             break;
+                         case "practice":
+                             intent.putExtra("title", "Ôn tập câu hỏi");
+                             break;
+                         case "point":
+                             intent.putExtra("title", "Câu hỏi điểm liệt");
+                             break;
+                         case "top":
+                             intent.putExtra("title", "Top 50 câu bị sai");
+                             break;
+                     }
                      holder.itemView.getContext().startActivity(intent);
                  }else {
                      Intent trafficSign = new Intent(context, TrafficSignActivity.class);
+                     trafficSign.putExtra("title", "Biển báo");
                      holder.itemView.getContext().startActivity(trafficSign);
                  }
              }
