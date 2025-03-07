@@ -3,6 +3,7 @@ package com.example.thibanglaixe;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thibanglaixe.Adapter.MainactivityFuncAdapter;
+import com.example.thibanglaixe.object.DocxReader;
+import com.example.thibanglaixe.object.Question;
 import com.example.thibanglaixe.untilities.GridSpacingItemDecoration;
 
 import java.util.ArrayList;
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         listTag = new ArrayList<>(Arrays.asList("random", "test", "wrong", "practice", "news", "note", "point", "top"));
         adapter = new MainactivityFuncAdapter(this, listIdColor, listIdIcon, listNameFunc, listTag);
         main_rv_func.setAdapter(adapter);
+
+        ArrayList<Question> listQuestion = DocxReader.readDocxQuestions(getApplicationContext(), "test_data.docx");
+        Toast.makeText(this, Integer.toString(listQuestion.size()), Toast.LENGTH_SHORT).show();
     }
 
     private int dpToPx(Context context, int dp) {

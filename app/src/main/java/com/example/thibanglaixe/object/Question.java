@@ -10,15 +10,15 @@ public class Question {
     int answer;
     int yourAnswer;
 
-    public Question(int answer, String choice1, String choice2, String choice3, String choice4, String numberQuestion, int yourAnswer, String title) {
-        this.answer = answer;
+    public Question(String numberQuestion, String title, String choice1, String choice2, String choice3, String choice4, int answer) {
+        this.numberQuestion = numberQuestion;
+        this.title = title;
         this.choice1 = choice1;
         this.choice2 = choice2;
         this.choice3 = choice3;
         this.choice4 = choice4;
-        this.numberQuestion = numberQuestion;
-        this.yourAnswer = yourAnswer;
-        this.title = title;
+        this.answer = answer;
+        this.yourAnswer = -1; // Mặc định chưa chọn đáp án
     }
 
     public int getAnswer() {
@@ -83,5 +83,16 @@ public class Question {
 
     public void setYourAnswer(int yourAnswer) {
         this.yourAnswer = yourAnswer;
+    }
+
+    @Override
+    public String toString() {
+        return numberQuestion + ": " + title + "\n" +
+                "1. " + choice1 + "\n" +
+                "2. " + choice2 + "\n" +
+                "3. " + choice3 + "\n" +
+                "4. " + choice4 + "\n" +
+                "Đáp án đúng: " + answer + "\n" +
+                "Bạn chọn: " + (yourAnswer == -1 ? "Chưa chọn" : yourAnswer) + "\n";
     }
 }

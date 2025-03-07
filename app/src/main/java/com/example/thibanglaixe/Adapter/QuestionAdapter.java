@@ -39,9 +39,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         holder.numberQuestion.setText(getQuestion.getNumberQuestion());
         holder.titleQuestion.setText(getQuestion.getTitle());
         holder.answer1.setText(getQuestion.getChoice1());
-        holder.answer1.setText(getQuestion.getChoice1());
-        holder.answer1.setText(getQuestion.getChoice1());
-        holder.answer1.setText(getQuestion.getChoice1());
+        holder.answer2.setText(getQuestion.getChoice2());
+        if(!getQuestion.getChoice3().isEmpty()) holder.answer3.setText(getQuestion.getChoice3());
+        else holder.answer3.setVisibility(View.GONE);
+        if(!getQuestion.getChoice4().isEmpty()) holder.answer4.setText(getQuestion.getChoice4());
+        else holder.answer4.setVisibility(View.GONE);
 
         holder.radioGroup_question.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
