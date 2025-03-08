@@ -12,4 +12,5 @@ public class Constants {
     public static final String PREF_IS_LOGIN = "isLogin";
     public static final String PREF_IS_SAVE_INF = "isSaveInf";
     public static final String PREF_COLLECTION_USER = "users";
+    public static final String PREF_LEVEL_CERTIFICATE = "levelCertificate";
 }
