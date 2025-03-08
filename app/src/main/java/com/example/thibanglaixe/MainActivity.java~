@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         iv_main_setting = findViewById(R.id.iv_main_setting);
         iv_main_setting.setOnClickListener(viewSetting -> {
-            Intent toSetting = new Intent(getApplicationContext(), CertificateActivity.class);
+            Intent toSetting = new Intent(MainActivity.this, CertificateActivity.class);
             startActivity(toSetting);
         });
     }
